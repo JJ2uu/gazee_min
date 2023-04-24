@@ -9,4 +9,9 @@ public class ProductDAO {
 	
 	@Autowired
 	SqlSessionTemplate my;
+	
+	public ProductVO one(int no) {
+		ProductVO bag = my.selectOne("product.one", no);
+		return bag;
+	}
 }

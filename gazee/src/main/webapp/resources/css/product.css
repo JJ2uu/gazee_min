@@ -1,0 +1,112 @@
+@charset "UTF-8";
+
+.product {
+	width: 1000px;
+	display: flex;
+	flex-flow: row;
+	margin: 0 auto;
+}
+
+#productImg {
+	width: 500px;
+	height: 400px;
+}
+
+#productInfo {
+	width: 500px;
+	height: 400px;
+	padding: 40px 80px;
+	text-align: left;
+	display: flex;
+	flex-flow: column;
+}
+
+#price {
+	font-size: 36px;
+	font-weight: 700;
+}
+
+.sellerInfo {
+	width: 1000px;
+	margin: 0 auto;
+	padding: 50px 0;
+	text-align: left;
+}
+
+.relation {
+	width: 1000px;
+	margin: 0 auto;
+	padding: 50px 0 20px 0;
+	text-align: left;
+}
+
+.buy {
+	margin-top: 20px;
+}
+
+#buyButton {
+	width: 340px;
+	height: 50px;
+	border-style: none;
+	background-color: #693FAA;
+	color: #fff;
+}
+
+.seller {
+	display: flex;
+	align-items: center;
+	margin-top: 24px;
+}
+
+#info {
+	display: flex;
+	flex-flow: column;
+}
+
+.sales {
+	width: 200px;
+	height: 50px;
+	margin-left: 30px;
+	border: 1px solid rgba(212, 216, 229, .5);
+	border-radius: 5px;
+	background-color: rgba(212, 216, 229, .25);
+	text-align: center;
+	color: #7b8994;
+}
+
+.line {
+	width: 1000px;
+	height: 1px;
+	margin: 0 auto;
+	background-color: #dee2e6;
+}
+
+.relationProduct {
+	display: flex;
+	flex-flow: row;
+	justify-content: space-between;
+}
+
+.rpInfo {
+	width: 150px;
+}
+
+.rpImage {
+	margin-top: 30px;
+	margin-bottom: 10px;
+}
+
+.rpTitle {
+	font-size: 16px;
+	font-weight: 300;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+  	word-break:break-all;
+}
+
+.rpPrice {
+	font-size: 16px;
+	font-weight: 700;
+}
+
