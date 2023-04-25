@@ -29,26 +29,87 @@
 					img = json.img
 					memId = json.memId
 					
+					const arr = img.split(',');
+
+					console.log(Array.isArray(arr));
+					console.log(arr);
+					
+					let active = document.getElementById('imgActive');
+					
+					active.innerHTML = "<img src='resources/img/" + arr[0] + ".jpg' style='width: 100%; height: 100%; opacity: 0.98; object-fit:cover;'>"
+					
+					for (var i = 1; i < arr.length; i++) {
+						let divTag = document.createElement('div');
+						divTag.className = "carousel-item";
+						divTag.innerHTML = "<img src='resources/img/" + arr[i] + ".jpg' style='width: 100%; height: 100%; opacity: 0.98; object-fit:cover;'>"
+							
+						$("#imgTag").append(divTag);
+					}
+					
 					$("#category").append(category)
 					$("#productTitle").append(title)
 					$("#productContent").append(content)
 					$("#priceNumber").append(price + " ")
-				}
-			})
-		})
+					$("#mem_id").append(memId)
+					
+					<% session.setAttribute("id", "root");%>
+					var session = "<%= session.getAttribute("id")%>";
+					console.log(session);
+					console.log(memId);
+					console.log(session === memId)
+			
+					if (session !== null) {
+						/* 상단 member 부분 */					
+						let li1 = document.getElementById("login");
+						let li2 = document.getElementById("line");
+						let li3 = document.getElementById("join");
+						
+						li1.remove();
+						li2.remove();
+						li3.remove();
+
+						let ul = document.getElementById("user");
+						
+						ul.innerHTML = "<li>" + session + " 님 반갑습니다.</li>" +
+									   "<li>로그아웃</li>";
+					}
+					if (session === memId) {
+						/* 구매신청버튼 */
+						let button = document.getElementById('buyButton');
+						button.remove();
+						
+						let buyDiv = document.getElementById("buyDiv");
+						
+						buyDiv.innerHTML = "<button id='edit' style='width: 160px; height: 50px; border-style: none; background-color: #693FAA; color: #fff;'>게시글 수정</button>"
+											+ "<button id='delete' style='width: 160px; height: 50px; border-style: none; background-color: #000; color: #fff;'>게시글 삭제</button>";
+					} // session === memId
+				} // success
+			}) // ajax
+		}) // document
+		
+		$('document').ready(function() {
+			$.ajax({
+				url: 'productList',
+				data: {
+					category : '전자기기/휴대폰'
+				},
+				success: function(result) {
+					$('.relationProduct').append(result);
+				} // success
+			}) // ajax
+		}) // document
 	})
-	
 </script>
 <title>가지가지</title>
 </head>
 <body>
 	<div id="wrap">
 		<div id="header">
-			<div id="login">
-				<ul class="user">
-					<li>로그인</li>
+			<div id="member">
+				<ul class="user" id="user">
+					<li id="login">로그인</li>
 					<li id="line">|</li>
-					<li>회원가입</li>
+					<li id="join">회원가입</li>
 				</ul>
 			</div>
 			<div class="headerContent">
@@ -71,9 +132,9 @@
 						<button type="button" data-bs-target="#productImg" data-bs-slide-to="2"></button>
 					</div>
 					<div class="carousel-inner">
-						<div class="carousel-item active" style="background-color: black; width: 100%; height: 400px;"></div>
-						<div class="carousel-item" style="background-color: red; width: 100%; height: 400px;"></div>
-						<div class="carousel-item" style="background-color: blue; width: 100%; height: 400px;"></div>
+						<div id="imgTag">
+							<div class="carousel-item active" id = "imgActive"></div>
+						</div>
 						<button class="carousel-control-prev" type="button" data-bs-target="#productImg" data-bs-slide="prev">
 							<span class="carousel-control-prev-icon"></span>
 						</button>
@@ -89,74 +150,31 @@
 					<div id="price">
 						<span><span id="priceNumber"></span>원</span>
 					</div>
-					<div class="buy">
+					<div id="buyDiv">
 						<button id="buyButton">구매신청하기</button>
 					</div>
 				</div>
 			</div>
 			<div class="sellerInfo">
-				<span style="font-size: 20px;">판매자 정보</span>
-				<div class="seller">
-					<div id="profile" style="border-radius: 50%; background-color: gray; width: 80px; height: 80px; margin-right: 30px; margin-left: 10px;"></div>
-					<div id="info">
-						<span style="font-size: 16px;">닉네임</span>
-						<span style="font-size: 14px;">서울시 영등포구</span>
-					</div>
-					<div class="sales">
-						<span style="line-height: 50px;">누적 판매 횟수 <b>10회</b></span>
+				<div class="sellerInfoDiv">
+					<span style="font-size: 20px;">판매자 정보</span>
+					<div class="seller">
+						<div id="profile" style="border-radius: 50%; background-color: gray; width: 80px; height: 80px; margin-right: 30px; margin-left: 10px;"></div>
+						<div id="info">
+							<span style="font-size: 16px;" id = "mem_id"></span>
+							<span style="font-size: 14px;">서울시 영등포구</span>
+						</div>
+						<div class="sales">
+							<span style="line-height: 50px;">누적 판매 횟수 <b>10회</b></span>
+						</div>
 					</div>
 				</div>
+				<div class="map" style="width: 450px; background-color: #000;"></div>
 			</div>
 			<div class="line"></div>
 			<div class="relation">
 				<span style="font-size: 20px; font-weight: 700;">이런 상품은 어때요?</span>
-				<div class="relationProduct">
-					<div class="rpInfo">
-						<div class="rpImage" style="width: 150px; height: 150px; background-color: #000;"></div>
-						<div class="rpTitle">
-							<span>아이폰 13 팝니다.</span>
-						</div>
-						<div class="rpPrice">
-							<span><span style="font-size: 24px;">77,000 </span>원</span>
-						</div>
-					</div>
-					<div class="rpInfo">
-						<div class="rpImage" style="width: 150px; height: 150px; background-color: #000;"></div>
-						<div class="rpTitle">
-							<span>아이폰 13 팝니다.</span>
-						</div>
-						<div class="rpPrice">
-							<span><span style="font-size: 24px;">77,000 </span>원</span>
-						</div>
-					</div>
-					<div class="rpInfo">
-						<div class="rpImage" style="width: 150px; height: 150px; background-color: #000;"></div>
-						<div class="rpTitle">
-							<span>아이폰 13 팝니다.</span>
-						</div>
-						<div class="rpPrice">
-							<span><span style="font-size: 24px;">77,000 </span>원</span>
-						</div>
-					</div>
-					<div class="rpInfo">
-						<div class="rpImage" style="width: 150px; height: 150px; background-color: #000;"></div>
-						<div class="rpTitle">
-							<span>아이폰 13 팝니다.</span>
-						</div>
-						<div class="rpPrice">
-							<span><span style="font-size: 24px;">77,000 </span>원</span>
-						</div>
-					</div>
-					<div class="rpInfo">
-						<div class="rpImage" style="width: 150px; height: 150px; background-color: #000;"></div>
-						<div class="rpTitle">
-							<span>아이폰 13 팝니다.</span>
-						</div>
-						<div class="rpPrice">
-							<span><span style="font-size: 24px;">77,000 </span>원</span>
-						</div>
-					</div>
-				</div>
+				<div class="relationProduct"></div>
 			</div>
 		</div>
 	</div>

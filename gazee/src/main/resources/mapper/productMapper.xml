@@ -18,6 +18,10 @@
 		select * from product where no = #{no}
 	</select>
 	
+	<select id="list" resultType="productVO">
+		select * from product where category = #{category} limit 5
+	</select>
+	
 </mapper>
 
 

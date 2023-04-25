@@ -1,5 +1,7 @@
 package com.multi.gazee;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,5 +19,11 @@ public class ProductController {
 	public ProductVO one(int no) {
 		ProductVO bag = dao.one(no);
 		return bag;
+	}
+	
+	@RequestMapping("productList")
+	public void list(String category, Model model) {
+		List<ProductVO> list = dao.list(category);
+		model.addAttribute("list", list);
 	}
 }

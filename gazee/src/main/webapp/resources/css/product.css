@@ -1,5 +1,6 @@
 @charset "UTF-8";
 
+/* 전체 컨텐츠 */
 .product {
 	width: 1000px;
 	display: flex;
@@ -7,11 +8,25 @@
 	margin: 0 auto;
 }
 
+/* 상품 이미지 슬라이드 div */
 #productImg {
 	width: 500px;
 	height: 400px;
 }
 
+/* 이미지 div */
+.carousel-item {
+	background-color: black;
+	width: 100%;
+	height: 400px;
+}
+
+/* 슬라이드 화살표 */
+.carousel-control-next-icon, .carousel-control-prev-icon {
+    background-color: black;
+}
+
+/* 상품 상세정보 */
 #productInfo {
 	width: 500px;
 	height: 400px;
@@ -21,29 +36,20 @@
 	flex-flow: column;
 }
 
+/* 상품 가격 */
 #price {
 	font-size: 36px;
 	font-weight: 700;
 }
 
-.sellerInfo {
-	width: 1000px;
-	margin: 0 auto;
-	padding: 50px 0;
-	text-align: left;
-}
-
-.relation {
-	width: 1000px;
-	margin: 0 auto;
-	padding: 50px 0 20px 0;
-	text-align: left;
-}
-
-.buy {
+/* 구매신청버튼 공간 div */
+#buyDiv {
 	margin-top: 20px;
+	display: flex;
+    justify-content: space-between;
 }
 
+/* 구매신청버튼 */
 #buyButton {
 	width: 340px;
 	height: 50px;
@@ -52,17 +58,30 @@
 	color: #fff;
 }
 
+/* 판매자 정보 공간 div */
+.sellerInfo {
+	width: 1000px;
+	margin: 0 auto;
+	padding: 50px 0;
+	text-align: left;
+	display: flex;
+	justify-content: space-between;
+}
+
+/* 판매자 정보 */
 .seller {
 	display: flex;
 	align-items: center;
 	margin-top: 24px;
 }
 
+/* 판매자 상세정보 */
 #info {
 	display: flex;
 	flex-flow: column;
 }
 
+/* 누적판매횟수 */
 .sales {
 	width: 200px;
 	height: 50px;
@@ -74,6 +93,7 @@
 	color: #7b8994;
 }
 
+/* 중간 라인 */
 .line {
 	width: 1000px;
 	height: 1px;
@@ -81,23 +101,35 @@
 	background-color: #dee2e6;
 }
 
+/* 관련 상품 공간 div */
+.relation {
+	width: 1000px;
+	margin: 0 auto;
+	padding: 50px 0 20px 0;
+	text-align: left;
+}
+
+/* 관련 상품 div */
 .relationProduct {
 	display: flex;
 	flex-flow: row;
 	justify-content: space-between;
 }
 
+/* 관련상품 정보 공간 div */
 .rpInfo {
 	width: 150px;
 }
 
+/* 관련상품 이미지 */
 .rpImage {
 	margin-top: 30px;
 	margin-bottom: 10px;
 }
 
+/* 관련상품 제목 */
 .rpTitle {
-	font-size: 16px;
+	font-size: 14px;
 	font-weight: 300;
 	overflow: hidden;
 	text-overflow: ellipsis;
@@ -105,8 +137,12 @@
   	word-break:break-all;
 }
 
+/* 관련상품 가격 */
 .rpPrice {
 	font-size: 16px;
 	font-weight: 700;
 }
+
+
+
 
