@@ -22,8 +22,29 @@ public class ProductController {
 	}
 	
 	@RequestMapping("productList")
-	public void list(String category, Model model) {
-		List<ProductVO> list = dao.list(category);
+	public void list(ProductVO bag, Model model) {
+		List<ProductVO> list = dao.list(bag);
 		model.addAttribute("list", list);
+	}
+	
+	@RequestMapping("edit")
+	public void edit(int no, Model model) {
+		System.out.println("edit호출");
+		ProductVO bag = dao.one(no);
+		System.out.println(bag.getTitle());
+		System.out.println(bag.getContent());
+		System.out.println(bag.getImg());
+		model.addAttribute("bag", bag);
+	}
+	
+	@RequestMapping("update")
+	@ResponseBody
+	public String update(ProductVO bag) {
+		int result = dao.update(bag);
+		if (result == 1) {
+			return "index";
+		} else {
+			return "no";
+		}
 	}
 }

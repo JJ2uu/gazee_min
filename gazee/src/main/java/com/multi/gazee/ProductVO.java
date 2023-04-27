@@ -9,7 +9,7 @@ public class ProductVO {
 	private String img;
 	private int view;
 	private String memId;
-	
+
 	public int getNo() {
 		return no;
 	}

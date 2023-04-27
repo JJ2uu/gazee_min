@@ -1,0 +1,94 @@
+@charset "UTF-8";
+	.category_select {
+		width: 1000px;
+		margin: 20px auto 0 auto;
+		text-align: left;
+	}
+	
+	#categorySelect {
+		width: 150px;
+		height: 30px;
+		border: 1px solid rgba(212, 216, 229, .9);
+		border-radius: 4px;
+	}
+	
+	.write {
+		width: 1000px;
+		margin: 5px auto;
+		display: flex;
+		flex-flow: column;
+	}
+	
+	#title, #priceEdit {
+		border: 1px solid rgba(212, 216, 229, .9);
+		margin: 5px 0;
+		padding: 5px;
+		height: 40px;
+		font-size: 18px;
+		width: 937px;
+		border-radius: 4px;
+	}
+	
+	#productContent {
+		border: 1px solid rgba(212, 216, 229, .9);
+		padding: 5px;
+		font-size: 14px;
+		margin: 5px 0;
+		border-radius: 4px;
+	}
+	
+	.input-file-button {
+		margin: 20px 20px 20px 0;
+		padding: 6px;
+		width: 100px;
+		border: 1px solid rgba(212, 216, 229, .9);
+		background-color: rgba(212, 216, 229, .25);
+		border-radius: 4px;
+		color: #7b8994;
+		cursor: pointer;
+	}
+	
+	.file_upload {
+		display: flex;
+		align-items: center;
+	}
+	
+	#file_name_div {
+		display: flex;
+		width: 100%;
+		height: 38px;
+		border-radius: 4px;
+		padding-left: 5px;
+		border: 1px solid rgba(212, 216, 229, .5);
+	}
+	
+	#update {
+		width: 120px;
+		height: 40px;
+		background-color: #693FAA;
+		color: #fff;
+		border-radius: 5px;
+		border-style: none;
+	}
+	
+	#cancle {
+		width: 80px;
+		height: 40px;
+		background-color: #363636;
+		color: #fff;
+		border-radius: 5px;
+		border-style: none;
+	}
+	
+	.upButton {
+		width: 1000px;
+		margin: 0 auto;
+		display: flex;
+		justify-content: flex-end;
+	}
+	
+	#file_thumbnail {
+		display: flex;
+		justify-content: flex-start;
+		gap: 0 20px;
+	}

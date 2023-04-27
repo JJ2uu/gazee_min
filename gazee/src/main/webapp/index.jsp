@@ -27,21 +27,22 @@
 					content = json.content
 					price = json.price
 					img = json.img
+					view = json.view
 					memId = json.memId
 					
-					const arr = img.split(',');
+					const arr = img.split(' ');
 
 					console.log(Array.isArray(arr));
 					console.log(arr);
 					
 					let active = document.getElementById('imgActive');
 					
-					active.innerHTML = "<img src='resources/img/" + arr[0] + ".jpg' style='width: 100%; height: 100%; opacity: 0.98; object-fit:cover;'>"
+					active.innerHTML = "<img src='resources/img/" + arr[0] + "' style='width: 100%; height: 100%; opacity: 0.98; object-fit:cover;'>"
 					
-					for (var i = 1; i < arr.length; i++) {
+					for (var i = 1; i < arr.length-1; i++) {
 						let divTag = document.createElement('div');
 						divTag.className = "carousel-item";
-						divTag.innerHTML = "<img src='resources/img/" + arr[i] + ".jpg' style='width: 100%; height: 100%; opacity: 0.98; object-fit:cover;'>"
+						divTag.innerHTML = "<img src='resources/img/" + arr[i] + "' style='width: 100%; height: 100%; opacity: 0.98; object-fit:cover;'>"
 							
 						$("#imgTag").append(divTag);
 					}
@@ -51,6 +52,7 @@
 					$("#productContent").append(content)
 					$("#priceNumber").append(price + " ")
 					$("#mem_id").append(memId)
+					$("#view").append("누적 판매 횟수 <b>"+ view + "회</b>")
 					
 					<% session.setAttribute("id", "root");%>
 					var session = "<%= session.getAttribute("id")%>";
@@ -80,8 +82,9 @@
 						
 						let buyDiv = document.getElementById("buyDiv");
 						
-						buyDiv.innerHTML = "<button id='edit' style='width: 160px; height: 50px; border-style: none; background-color: #693FAA; color: #fff;'>게시글 수정</button>"
+						buyDiv.innerHTML = "<form action='edit'><input name='no' value='1' style='display:none;'><button id='edit' style='width: 160px; height: 50px; border-style: none; background-color: #693FAA; color: #fff;'>게시글 수정</button></form>"
 											+ "<button id='delete' style='width: 160px; height: 50px; border-style: none; background-color: #000; color: #fff;'>게시글 삭제</button>";
+																
 					} // session === memId
 				} // success
 			}) // ajax
@@ -91,7 +94,8 @@
 			$.ajax({
 				url: 'productList',
 				data: {
-					category : '전자기기/휴대폰'
+					category : '전자기기/휴대폰',
+					no : 1
 				},
 				success: function(result) {
 					$('.relationProduct').append(result);
@@ -159,17 +163,19 @@
 				<div class="sellerInfoDiv">
 					<span style="font-size: 20px;">판매자 정보</span>
 					<div class="seller">
-						<div id="profile" style="border-radius: 50%; background-color: gray; width: 80px; height: 80px; margin-right: 30px; margin-left: 10px;"></div>
+						<div id="profile" style="width: 80px; height: 80px; margin-right: 30px; margin-left: 10px;">
+							<img src="resources/img/profile.jpg" style="width: 100%; height: 100%; object-fit:cover; overflow: hidden; border-radius: 50%;">
+						</div>
 						<div id="info">
 							<span style="font-size: 16px;" id = "mem_id"></span>
 							<span style="font-size: 14px;">서울시 영등포구</span>
 						</div>
 						<div class="sales">
-							<span style="line-height: 50px;">누적 판매 횟수 <b>10회</b></span>
+							<span style="line-height: 50px;" id="view"></span>
 						</div>
 					</div>
 				</div>
-				<div class="map" style="width: 450px; background-color: #000;"></div>
+				<div class="map" style="width: 450px;"></div>
 			</div>
 			<div class="line"></div>
 			<div class="relation">
